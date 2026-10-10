@@ -21,26 +21,30 @@ func main(){
 //$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
 
 
-func names(b int , u int)(int,int){ // i didn't give them names here as you see but its ok i called them n and j down here 
-	return b + u , b - u
-}
+func names(b int , u int)(int,int){ // b and u are used to recieve a copy from the main function ok 
+    b = 20  // doing this is not going to change anything in the main func so i does't affect anything its just a capy
+	u = 10 // the same 
+	return b + u , b - u  // this apporation takes either the copy or if i used pointer that's a diffrent thing 
+}                         // using pointers could change what inside func main easly ok 
 
 func main(){
-	j := 10
+	j := 10 // this is the main number not the copy one 
 	k := 5
-	n,g := names(j,k) // !!
-	fmt.Printf("this is total %d  and this is the minse %d ",n , g) // new thing here using %d inestand of %v 
+	n,g := names(j,k) // n and g those are related to return whearas names(j,k) are going to pass the first func and make a copy
+	fmt.Printf("this is total %d  and this is the minse %d ",n , g) 
+	fmt.Printf("j = %d and k = %d",j,k)
 }
 
 //$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
+
 func str(n string) (i string ){
 	return n
 }
 
 func main(){
 
-	i := str("hello world") // str("hello world") this is concidered n ok 
-	fmt.Print(i) // this is (i string ){ return n }  i have to print i to get what n has
+	i := str("hello world") // I'm taking this word to the first func as a copy 
+	fmt.Print(i) // i belongs to return but n is a paramoter take a copy or used as a pointer
 
 }
 //$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
@@ -54,18 +58,4 @@ func names(p,b int )(total int,mines int) {   // i can also write it like this n
 func main(){
 	total,mines:= names(10,5) // directly inestand of creating two varaibles  names(10,5)
 	fmt.Printf("this is total %d and this is the minse %d ",total,mines) // fmt.Print( %d ) > new thing i think it's used for numbers 
-}
-
-
-
-
-//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
-
-func listofname(n string,l int) (i string , o int){   // i want you to picture this kinda apporation i mean the soucend one 
-	return n , l  // but the first is porameters you either give them number or name ok you can do an apporation with it but i think just with pointers
-}
-func main(){
-	i,o := listofname("abdo mostafa", 18)  // i can give it a name from the first moment or from here its ok = (i,o :=) 
-	fmt.Printf("the name of the man is %v and his age is %d \n",i,o) //  listofname("abdo mostafa", 18) i can create a varaible and give a number or directory like this 
-	fmt.Println(strings.ToUpper(i)) 
 }
