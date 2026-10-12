@@ -1,61 +1,101 @@
-package main
-import (
-	"fmt"
-	"strings"
-)
+package main 
+import "fmt"
 
 
-// those are shortcuts
+
+
+
+
+
+func main(){
+	names := []string {"ahmed","omar","mohamed","salem"}
+	sort.Strings(names)
+	fmt.Println(names)
+	i := sort.SearchStrings(names,"ahmed")
+	fmt.Print("the position of this ",i)
+}
+
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
+
 
 func main(){
-	myname := "hamo salem"
-	fmt.Println(strings.Contains(myname,"hamo")) // its clear from the word it makes sure is this thing exict or not and it gives you result eather true or fulse at the end
-	fmt.Println(strings.Contains(myname,"omar"))
-	fmt.Println(strings.ReplaceAll(myname , "salem", "abdelghany"))  // the same though but this use it to change a word or something and don't forget its a temporary thing
-	fmt.Println(strings.ToUpper(myname)) // just makes everything C like this  (HAMO SALEM)
-	fmt.Print("the main one ",myname)   // so here is the bottom line these shortcuts do not change forever just for a certin time in the moment
+	f := 425
+	b := 10
+	j,p :=count(f,b)
+	fmt.Printf("this is what j has = %d and p though %d ",j,p)
+}
+
+func count(a,h int)(j,p int){
+	j = a % h   // modulo so a modulo h 
+	p = a / h   // using slash or a divided by h 
+	return  // reminder this word is important multiplied by this one *
 }
 
 
 
-//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
-
-
-func names(b int , u int)(int,int){ // b and u are used to recieve a copy from the main function ok 
-    b = 20  // doing this is not going to change anything in the main func so i does't affect anything its just a capy
-	u = 10 // the same 
-	return b + u , b - u  // this apporation takes either the copy or if i used pointer that's a diffrent thing 
-}                         // using pointers could change what inside func main easly ok 
-
-func main(){
-	j := 10 // this is the main number not the copy one 
-	k := 5
-	n,g := names(j,k) // n and g those are related to return whearas names(j,k) are going to pass the first func and make a copy
-	fmt.Printf("this is total %d  and this is the minse %d ",n , g) 
-	fmt.Printf("j = %d and k = %d",j,k)
-}
-
-//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
-
-func str(n string) (i string ){
-	return n
-}
-
-func main(){
-
-	i := str("hello world") // I'm taking this word to the first func as a copy 
-	fmt.Print(i) // i belongs to return but n is a paramoter take a copy or used as a pointer
-
-}
-//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$	//$$$$$$$$$$$$$$$$$$$ //$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
 
-func names(p,b int )(total int,mines int) {   // i can also write it like this names(p,b int ) not names(p int, b int )
-	// return p + b , p - b // two apporation so two (total int,mines int) got it ?
+
+
+
+func divmod(a *int , b *int)(g int , i int) {
+	return *a % *b , *a / *b           // this by using return and multeble varaible or apporations two varaible becouse two appoartions 
 }
 
 func main(){
-	total,mines:= names(10,5) // directly inestand of creating two varaibles  names(10,5)
-	fmt.Printf("this is total %d and this is the minse %d ",total,mines) // fmt.Print( %d ) > new thing i think it's used for numbers 
+	f := 13
+	h := 2
+	g , i := divmod(&f,&h) // I'm calling return ok 
+	fmt.Printf("this is the remander i think [%d] , but this is the slash [%d]",g,i)
+}
+
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
+
+
+func divmod(a,b int , div *int , mod *int ){
+	*div , *mod = a / b , a % b  // modifay things through pointers 
+}
+func main(){
+	f := 13
+	m := 2
+	var div int // its nesessary putting or definding these otherwise i wouldn't print anything 
+	var mod int 
+	divmod(f,m, &div , &mod)
+	fmt.Printf("div = [%d] and mod [%d] ",div , mod )
+}
+
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
+
+
+func copy(a string) (s string){
+	for g := len(a)-1 ; g >= 0 ; g-- { // this new thing len(a or anythings)-1 to get the last litter or number but i think no need to do it with numbers 
+		s += string(a[g]) // s += to move on antill i reaches the last litter this is not like printing directorly
+	}
+	return
+}
+
+func main(){
+	f := "mohamed"
+	s := copy(f) // calling return and what it has 
+	fmt.Print(s)
 }
