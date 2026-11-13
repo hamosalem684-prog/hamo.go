@@ -63,4 +63,3 @@ What should NOT be your focus now?
  ❌ Advanced architecture
 
 Too early.
-
